@@ -24,5 +24,9 @@ Runner game for Android (also Windows) made using LibGDX framework.
 * Tree stumps actually __are not__ obstacles, although look like ones
 * Wells in villages actually __are__ obstacles
 
+### How to launch on desktop
+In order for it to work on PC, you have to set Working directory in Run configurations to "~\BowRunner\android\assets", otherwise it will not be able to find any asset and will crush at start.
+![Screenshot](http://i.imgur.com/WN1x67C.png)
+
 ## Disclaimer
 Some assets are not made by me (because i draw like a retard) i found them on the internet. Consider them programmer art. I do not know who are the real authors and i'm not sure if they are free or not, but i do not monetize my app, so i consider this a fair use.
