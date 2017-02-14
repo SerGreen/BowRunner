@@ -1,9 +1,11 @@
 package com.sergreen.bowrunner.Screens;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
+import com.badlogic.gdx.assets.AssetLoaderParameters;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
@@ -38,6 +40,8 @@ public class SplashLoadScreen implements Screen, AssetErrorListener {
         Global.assetManager.load("textures/gui/loading_bar_filler.png", Texture.class);
         Global.assetManager.load("textures/gui/loading_bar_filler_end.png", Texture.class);
 
+        //* This should work, but it does not
+        // [UPD] Ok, it does
         FileHandle root = Gdx.files.internal("textures");
         ArrayList<FileHandle> texturePaths = getFileHandles(root);
 
@@ -48,6 +52,160 @@ public class SplashLoadScreen implements Screen, AssetErrorListener {
             Global.assetManager.load(texture.path(), Texture.class);
         for(FileHandle sound : soundsPaths)
             Global.assetManager.load(sound.path(), Sound.class);
+        //*/
+
+
+        // Okay, i'll comment in english
+        // Somehow this crap of a framework can't find the folder via Gdx.files.internal, so instead of those couple lines above we will have this fucking hell of a crunch:
+        // [UPD 14.02.2017] Hm, ok, it actually works with code above now. I'll leave all these lines in place just because
+        /*
+        Global.assetManager.load("sounds/arrow_hit1.mp3", Sound.class);
+        Global.assetManager.load("sounds/arrow_shoot1.mp3", Sound.class);
+        Global.assetManager.load("sounds/arrow_shoot2.mp3", Sound.class);
+        Global.assetManager.load("sounds/bird_flap1.mp3", Sound.class);
+        Global.assetManager.load("sounds/bird_flap2.mp3", Sound.class);
+        Global.assetManager.load("sounds/bird_flap3.mp3", Sound.class);
+        Global.assetManager.load("sounds/bird_flap4.mp3", Sound.class);
+        Global.assetManager.load("sounds/bow_load.mp3", Sound.class);
+        Global.assetManager.load("sounds/bow_load2.mp3", Sound.class);
+        Global.assetManager.load("sounds/bubble.mp3", Sound.class);
+        Global.assetManager.load("sounds/button_click2.mp3", Sound.class);
+        Global.assetManager.load("sounds/button_click3.wav", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit1.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit2.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit3.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit4.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit5.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit6.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit7.mp3", Sound.class);
+        Global.assetManager.load("sounds/flesh_hit8.mp3", Sound.class);
+        Global.assetManager.load("sounds/game over.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump1.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump2.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump3.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump4.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump5.mp3", Sound.class);
+        Global.assetManager.load("sounds/jump6.mp3", Sound.class);
+        Global.assetManager.load("sounds/land1.mp3", Sound.class);
+        Global.assetManager.load("sounds/land2.mp3", Sound.class);
+        Global.assetManager.load("sounds/land3.mp3", Sound.class);
+        Global.assetManager.load("sounds/step1.mp3", Sound.class);
+        Global.assetManager.load("sounds/step2.mp3", Sound.class);
+        Global.assetManager.load("sounds/target_hit1.mp3", Sound.class);
+        Global.assetManager.load("sounds/target_hit2.mp3", Sound.class);
+        Global.assetManager.load("sounds/target_hit3.mp3", Sound.class);
+        
+        Global.assetManager.load("textures/arrow.png", Texture.class);
+        Global.assetManager.load("textures/blood.png", Texture.class);
+        Global.assetManager.load("textures/blood2.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/forest_background.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/loading_background.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/menu_background_animated.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/radial_rays.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/settings_background.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/stats_best_background.png", Texture.class);
+        Global.assetManager.load("textures/backgrounds/stats_total_background.png", Texture.class);
+        Global.assetManager.load("textures/decorations/flowers.png", Texture.class);
+        Global.assetManager.load("textures/decorations/forest_fore.png", Texture.class);
+        Global.assetManager.load("textures/decorations/fungi.png", Texture.class);
+        Global.assetManager.load("textures/decorations/village_fore.png", Texture.class);
+        Global.assetManager.load("textures/decorations/well_front.png", Texture.class);
+        Global.assetManager.load("textures/ground/barn.png", Texture.class);
+        Global.assetManager.load("textures/ground/barn_ground.png", Texture.class);
+        Global.assetManager.load("textures/ground/box.png", Texture.class);
+        Global.assetManager.load("textures/ground/cliffdown.png", Texture.class);
+        Global.assetManager.load("textures/ground/cliffdownlarge.png", Texture.class);
+        Global.assetManager.load("textures/ground/cliffup.png", Texture.class);
+        Global.assetManager.load("textures/ground/cliffuplarge.png", Texture.class);
+        Global.assetManager.load("textures/ground/downhill.png", Texture.class);
+        Global.assetManager.load("textures/ground/fallen_tree.png", Texture.class);
+        Global.assetManager.load("textures/ground/fallen_tree_ground.png", Texture.class);
+        Global.assetManager.load("textures/ground/hay_bale.png", Texture.class);
+        Global.assetManager.load("textures/ground/hole.png", Texture.class);
+        Global.assetManager.load("textures/ground/holelarge.png", Texture.class);
+        Global.assetManager.load("textures/ground/house.png", Texture.class);
+        Global.assetManager.load("textures/ground/house_ground.png", Texture.class);
+        Global.assetManager.load("textures/ground/lamp_ground.png", Texture.class);
+        Global.assetManager.load("textures/ground/lamp_post.png", Texture.class);
+        Global.assetManager.load("textures/ground/large_hay_bale.png", Texture.class);
+        Global.assetManager.load("textures/ground/long_house_a.png", Texture.class);
+        Global.assetManager.load("textures/ground/long_house_b.png", Texture.class);
+        Global.assetManager.load("textures/ground/long_house_ground.png", Texture.class);
+        Global.assetManager.load("textures/ground/plain.png", Texture.class);
+        Global.assetManager.load("textures/ground/starterhut.png", Texture.class);
+        Global.assetManager.load("textures/ground/uphill.png", Texture.class);
+        Global.assetManager.load("textures/ground/well_back.png", Texture.class);
+        Global.assetManager.load("textures/ground/well_ground.png", Texture.class);
+        Global.assetManager.load("textures/gui/aim_halo.png", Texture.class);
+        Global.assetManager.load("textures/gui/aim_sprite.png", Texture.class);
+        Global.assetManager.load("textures/gui/arrow_ammo.png", Texture.class);
+        Global.assetManager.load("textures/gui/back_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/bonus_bar_filler.png", Texture.class);
+        Global.assetManager.load("textures/gui/bonus_bar_frame.png", Texture.class);
+        Global.assetManager.load("textures/gui/continue_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/distance.png", Texture.class);
+        Global.assetManager.load("textures/gui/exit_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/font.png", Texture.class);
+        Global.assetManager.load("textures/gui/font_num.png", Texture.class);
+        Global.assetManager.load("textures/gui/home_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/jump_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/left_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/loading_bar_back.png", Texture.class);
+        Global.assetManager.load("textures/gui/loading_bar_end.png", Texture.class);
+        Global.assetManager.load("textures/gui/loading_bar_filler.png", Texture.class);
+        Global.assetManager.load("textures/gui/loading_bar_filler_end.png", Texture.class);
+        Global.assetManager.load("textures/gui/loading_bar_start.png", Texture.class);
+        Global.assetManager.load("textures/gui/music_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/paused.png", Texture.class);
+        Global.assetManager.load("textures/gui/quiver.png", Texture.class);
+        Global.assetManager.load("textures/gui/retry_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/right_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/score.png", Texture.class);
+        Global.assetManager.load("textures/gui/settings_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/sound_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/start_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/stats_best_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/stats_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/stats_close_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/stats_total_button.png", Texture.class);
+        Global.assetManager.load("textures/gui/target_medals.png", Texture.class);
+        Global.assetManager.load("textures/pickups/base.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_5arrows.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_arrow.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_bubble.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_infinite.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_multiplier.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_quiver.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_score.png", Texture.class);
+        Global.assetManager.load("textures/pickups/bonus_slowdown.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/aim_hands.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/aim_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/feather.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/jump_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/jump_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/run_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/naked/run_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/aim_hands.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/aim_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/feather.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/jump_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/jump_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/run_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/nigger/run_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/aim_hands.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/aim_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/feather.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/jump_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/jump_torso.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/run_legs.png", Texture.class);
+        Global.assetManager.load("textures/skins/standard/run_torso.png", Texture.class);
+        Global.assetManager.load("textures/targets/bird.png", Texture.class);
+        Global.assetManager.load("textures/targets/chicken.png", Texture.class);
+        Global.assetManager.load("textures/targets/target.png", Texture.class);
+        //*/
+
+        // Isn't it WONDERFUL?!
+        
 
         Global.assetManager.load("music/bomberguy-short.mp3", Music.class);
     }
