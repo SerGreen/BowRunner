@@ -24,6 +24,10 @@ Endless runner game for Android (also Windows) made using [LibGDX framework](htt
 * Tree stumps actually __are not__ obstacles, although look like ones
 * Wells in villages actually __are__ obstacles
 
+## Download
+You can download apk file [here](https://github.com/SerGreen/BowRunner/releases/latest) (it is unsigned though).  
+I did not bother making Windows executable. Still you can launch it via Android Studio.
+
 ### How to launch on desktop
 In order for it to work on PC, you have to set Working directory in Run configurations to "~\BowRunner\android\assets", otherwise it will not be able to find any asset and will crush at start.
 ![Screenshot](http://i.imgur.com/WN1x67C.png)
