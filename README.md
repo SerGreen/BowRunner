@@ -1,7 +1,7 @@
 # BowRunner
 Endless runner game for Android (also Windows) made using [LibGDX framework](https://libgdx.badlogicgames.com).
 
-[View on Gfycat](https://gfycat.com/AnyTightAmericanquarterhorse)
+[View full animation on Gfycat](https://gfycat.com/AnyTightAmericanquarterhorse)
 
 [![Demo BowRunner](https://j.gifs.com/xGBzgq.gif)](https://gfycat.com/AnyTightAmericanquarterhorse)
 
