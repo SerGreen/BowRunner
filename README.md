@@ -1,5 +1,5 @@
 # BowRunner
-Runner game for Android (also Windows) made using LibGDX framework.
+Endless runner game for Android (also Windows) made using [LibGDX framework](https://libgdx.badlogicgames.com).
 
 [View on Gfycat](https://gfycat.com/AnyTightAmericanquarterhorse)
 
